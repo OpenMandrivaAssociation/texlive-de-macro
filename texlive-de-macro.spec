@@ -1,3 +1,9 @@
+# revision 18835
+# category Package
+# catalog-ctan /support/de-macro
+# catalog-date 2010-03-10 11:48:14 +0100
+# catalog-license other-free
+# catalog-version 1.3
 Name:		texlive-de-macro
 Version:	1.3
 Release:	1
@@ -46,6 +52,7 @@ document, or in the document's "private" package file.
 %doc %{_texmfdistdir}/doc/support/de-macro/README
 %doc %{_texmfdistdir}/doc/support/de-macro/user-guide.pdf
 %doc %{_texmfdistdir}/doc/support/de-macro/user-guide.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -60,3 +67,5 @@ pushd %{buildroot}%{_bindir}
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
