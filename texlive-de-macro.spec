@@ -1,4 +1,4 @@
-# revision 18835
+# revision 26355
 # category Package
 # catalog-ctan /support/de-macro
 # catalog-date 2010-03-10 11:48:14 +0100
@@ -6,7 +6,7 @@
 # catalog-version 1.3
 Name:		texlive-de-macro
 Version:	1.3
-Release:	2
+Release:	3
 Summary:	Expand private macros in a document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/de-macro
