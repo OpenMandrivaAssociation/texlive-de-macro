@@ -1,18 +1,12 @@
-# revision 26355
-# category Package
-# catalog-ctan /support/de-macro
-# catalog-date 2010-03-10 11:48:14 +0100
-# catalog-license other-free
-# catalog-version 1.3
 Name:		texlive-de-macro
-Version:	1.3
-Release:	12
+Version:	61719
+Release:	1
 Summary:	Expand private macros in a document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/de-macro
 License:	OTHER-FREE
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -29,12 +23,12 @@ running de-macro on it. De-macro will expand macros defined in
 document, or in the document's "private" package file.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -46,32 +40,14 @@ document, or in the document's "private" package file.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 pushd %{buildroot}%{_bindir}
-    ln -sf %{_texmfdistdir}/scripts/de-macro/de-macro de-macro
+ln -sf %{_texmfdistdir}/scripts/de-macro/de-macro de-macro
 popd
 mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf-dist %{buildroot}%{_datadir}
-
-
-%changelog
-* Tue Aug 07 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.3-3
-+ Revision: 812213
-- Update to latest release.
-
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.3-2
-+ Revision: 750886
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.3-1
-+ Revision: 718216
-- texlive-de-macro
-- texlive-de-macro
-- texlive-de-macro
-- texlive-de-macro
-
