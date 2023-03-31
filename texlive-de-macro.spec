@@ -1,6 +1,6 @@
 Name:		texlive-de-macro
 Version:	61719
-Release:	1
+Release:	2
 Summary:	Expand private macros in a document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/support/de-macro
