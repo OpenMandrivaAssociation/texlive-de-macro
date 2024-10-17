@@ -3,7 +3,7 @@ Version:	66746
 Release:	1
 Summary:	Expand private macros in a document
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/support/de-macro
+URL:		https://www.ctan.org/tex-archive/support/de-macro
 License:	OTHER-FREE
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.doc.r%{version}.tar.xz
