@@ -1,53 +1,29 @@
-Name:		texlive-de-macro
-Version:	66746
-Release:	1
+%global tl_name de-macro
+%global tl_revision 66746
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.4.1
+Release:	%{tl_revision}.1
 Summary:	Expand private macros in a document
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/support/de-macro
-License:	OTHER-FREE
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.doc.r%{version}.tar.xz
+License:	other-free
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/de-macro.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
-Provides:	texlive-de-macro.bin = %{EVRD}
+%texlive_base_requires
+Requires:	texlive(de-macro.bin)
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-De-macro is a Python script that helps authors who like to use
-private LaTeX macros (for example, as abbreviations). A
-technical editor or a cooperating author may balk at such a
-manuscript; you can avoid manuscript rejection misery by
-running de-macro on it. De-macro will expand macros defined in
-\(re)newcommand or \(re)newenvironment commands, within the
-document, or in the document's "private" package file.
+De-macro is a Python script that helps authors who like to use private
+LaTeX macros (for example, as abbreviations). A technical editor or a
+cooperating author may balk at such a manuscript; you can avoid
+manuscript rejection misery by running de-macro on it. De-macro will
+expand macros defined in \(re)newcommand or \(re)newenvironment
+commands, within the document, or in the document's "private" package
+file.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_bindir}/de-macro
-%{_texmfdistdir}/scripts/de-macro/de-macro
-%doc %{_texmfdistdir}/doc/support/de-macro/README
-%doc %{_texmfdistdir}/doc/support/de-macro/user-guide.pdf
-%doc %{_texmfdistdir}/doc/support/de-macro/user-guide.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_bindir}
-pushd %{buildroot}%{_bindir}
-ln -sf %{_texmfdistdir}/scripts/de-macro/de-macro de-macro
-popd
-mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf-dist %{buildroot}%{_datadir}
