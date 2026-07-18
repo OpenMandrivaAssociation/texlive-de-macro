@@ -1,5 +1,6 @@
 %global tl_name de-macro
 %global tl_revision 66746
+%global tl_bin_links de-macro:%{_texmfdistdir}/scripts/de-macro/de-macro
 
 Name:		texlive-%{tl_name}
 Epoch:		1
@@ -15,6 +16,8 @@ BuildArch:	noarch
 BuildSystem:	texlive
 Requires:	texlive(de-macro.bin)
 Provides:	texlive(%{tl_name}) = %{tl_revision}
+Provides:	texlive(%{tl_name}.bin) = %{tl_revision}
+Provides:	texlive-%{tl_name}.bin = %{EVRD}
 
 %description
 De-macro is a Python script that helps authors who like to use private
